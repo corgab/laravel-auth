@@ -33,11 +33,11 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required|max:255',
+            'title'=>'required|max:255|unique:projects',
             'description'=>'max:65000',
             'start_date'=>'required|date',
             'end_date'=>'required|date',
-            'project_url'=>'required|url',
+            'project_url'=>'required|url|unique:projects',
             'technologies_used'=>'required'
         ]);
 
@@ -71,11 +71,11 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $request->validate([
-            'title'=>'required|max:255',
+            'title'=>'required|max:255|unique:projects',
             'description'=>'max:65000',
             'start_date'=>'required|date',
             'end_date'=>'required|date',
-            'project_url'=>'required|url',
+            'project_url'=>'required|url|unique:projects',
             'technologies_used'=>'required'
         ]);
 
