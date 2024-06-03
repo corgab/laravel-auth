@@ -45,7 +45,7 @@ class ProjectController extends Controller
 
         $new_project = Project::create($form_data);
 
-        return to_route('admin.project.show', $new_project);
+        return to_route('admin.project.index', $new_project);
     }
 
     /**
@@ -62,7 +62,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.project.edit',compact('project'));
     }
 
     /**
@@ -70,7 +70,20 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $request->validate([
+            'title'=>'required|max:255',
+            'description'=>'max:65000',
+            'start_date'=>'required|date',
+            'end_date'=>'required|date',
+            'project_url'=>'required|url',
+            'technologies_used'=>'required'
+        ]);
+
+        $form_data = $request->all();
+
+        $project->update($form_data);
+
+        return to_route('admin.project.index', $project);
     }
 
     /**
@@ -78,6 +91,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        return to_route('admin.project.index');
     }
 }

@@ -2,11 +2,12 @@
 
 @section('content')
 <div class="container">
-    <h2 class="fs-4 text-secondary my-4">
+    <h2 class="fs-4 text-secondary my-4 text-center">
         {{ __('Dashboard') }}
     </h2>
-    <div class="row justify-content-center">
-        <div class="col">
+    <div>
+        <a href="{{route('admin.project.index')}}">Gestione progetti</a>
+        {{-- <div class="col">
             <div class="card">
                 <div class="card-header">{{ __('User Dashboard') }}</div>
 
@@ -19,7 +20,7 @@
 
                     {{ __('You are logged in!') }}
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
